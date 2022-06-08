@@ -37,6 +37,14 @@ jobs:
           [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
           Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-      - name: choco install googlechrome
+      - name: Choco install googlechrome
         shell: pwsh
-        run: choco install googlechrome
+        run: choco install googlechrome -y
+
+      - name: Download chromedriver
+        shell: pwsh
+        run: | 
+          Start-BitsTransfer 'https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_win32.zip'
+          Expand-Archive .\chromedriver_win32.zip
+        
+        
