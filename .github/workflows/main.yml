@@ -52,7 +52,8 @@ jobs:
         run: | 
           Install-Module -Name Selenium -RequiredVersion 3.0.1 -Force
  
-      - name: Get Module Selenium
+      - name: Get path selenium
         shell: pwsh
         run: | 
-          Get-Module -ListAvailable | Select-Object Name,ModuleBase
+          $PathSelenium = Get-Module Selenium -ListAvailable
+          dir -Path $($PathSelenium.ModuleBase) -Recurse
