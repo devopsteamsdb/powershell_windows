@@ -50,7 +50,7 @@ jobs:
       - name: Install Module Selenium
         shell: pwsh
         run: | 
-          Install-Module -Name Selenium -RequiredVersion 3.0.1
+          Install-Module -Name Selenium -RequiredVersion 3.0.1 -Force
  
       - name: Get Module Selenium
         shell: pwsh
