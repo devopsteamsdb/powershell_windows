@@ -55,4 +55,4 @@ jobs:
       - name: Get Module Selenium
         shell: pwsh
         run: | 
-          Get-Module -ListAvailable | Select-Object *
+          Get-Module -ListAvailable | Select-Object Name,ModuleBase
