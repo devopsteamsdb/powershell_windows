@@ -47,7 +47,7 @@ jobs:
           Start-BitsTransfer 'https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_win32.zip'
           Expand-Archive .\chromedriver_win32.zip
  
-      - name: Download chromedriver
+      - name: Install Module Selenium
         shell: pwsh
         run: | 
           Install-Module -Name Selenium -AllowPrerelease
@@ -55,4 +55,4 @@ jobs:
       - name: Get Module Selenium
         shell: pwsh
         run: | 
-          Get-Module Selenium -ListAvailable | Select-Object *
+          Get-Module -ListAvailable | Select-Object *
