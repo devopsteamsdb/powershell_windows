@@ -52,11 +52,17 @@ jobs:
         run: | 
           Install-Module -Name Selenium -RequiredVersion 3.0.1 -Force
  
-      - name: Get path selenium
+      - name: Update selenium assemblies
         shell: pwsh
         run: | 
           $PathSelenium = Get-Module Selenium -ListAvailable
           Copy-Item ".\chromedriver_win32\chromedriver.exe" -Destination "$($PathSelenium.ModuleBase)\assemblies" -Force
+          
+      - name: Test selenium Hellow World
+        shell: pwsh
+        run: | 
+          $Driver = Start-SeChrome
+          Stop-SeDriver -Driver $Driver
     
     
     
