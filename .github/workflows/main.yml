@@ -30,16 +30,9 @@ jobs:
         shell: pwsh
         run: Get-Date
  
-      - name: Install PackageProvider Chocolatey
+      - name: Install Chocolatey
         shell: pwsh
-        run: Install-PackageProvider -name chocolatey -Force
-
-      - name: Set PackageSource Chocolatey Trusted
-        shell: pwsh
-        run: Set-PackageSource -Name chocolatey -Trusted
-
-      - name: Get PackageSource
-        shell: pwsh
-        run: Get-PackageSource
-
-
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force
+          [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+          Invoke-Expression -Command ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
