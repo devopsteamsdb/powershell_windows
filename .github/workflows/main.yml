@@ -56,4 +56,7 @@ jobs:
         shell: pwsh
         run: | 
           $PathSelenium = Get-Module Selenium -ListAvailable
-          dir -Path $($PathSelenium.ModuleBase) -Recurse
+          Copy-Item ".\chromedriver_win32\chromedriver.exe" -Destination "$($PathSelenium.ModuleBase)\assemblies" -Force
+    
+    
+    
