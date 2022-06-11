@@ -44,7 +44,8 @@ jobs:
       - name: Download chromedriver
         shell: pwsh
         run: | 
-          Start-BitsTransfer 'https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_win32.zip'
+          $chromeversion = (Get-Item (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe').'(Default)').VersionInfo.FileVersion
+          Start-BitsTransfer 'https://chromedriver.storage.googleapis.com/$($chromeversion)/chromedriver_win32.zip'
           Expand-Archive .\chromedriver_win32.zip
  
       - name: Install Module Selenium
