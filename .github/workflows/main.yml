@@ -65,11 +65,14 @@ jobs:
           $URL = Enter-SeUrl https://www.mcafee.com/enterprise/en-us/downloads/my-products.html -Driver $Driver
           
           $Element = Find-SeElement -Driver $Driver -Id "grantNumber"
-          Send-SeKeys -Element $Element -Keys ${{ secrets.MCAFEE_GRANTNUMBER }}
+          Send-SeKeys -Element $Element -Keys "${{ secrets.MCAFEE_GRANTNUMBER }}"
           
           $Element = Find-SeElement -Driver $Driver -Id "email"
-          Send-SeKeys -Element $Element -Keys ${{ secrets.EMAIL }}
+          Send-SeKeys -Element $Element -Keys "${{ secrets.EMAIL }}"
           
+          $Element = Find-SeElement -Driver $Driver -Id "submit"
+          $Element.Click()
+
           Stop-SeDriver -Driver $Driver
     
     
