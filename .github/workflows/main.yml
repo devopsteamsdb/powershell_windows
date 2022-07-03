@@ -17,6 +17,9 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    env:
+      GRANTNUMBER: "${{ secrets.MCAFEE_GRANTNUMBER }}"
+      EMAIL: "${{ secrets.EMAIL }}"
     # The type of runner that the job will run on
     runs-on: windows-latest
 
@@ -65,10 +68,10 @@ jobs:
           $URL = Enter-SeUrl https://www.mcafee.com/enterprise/en-us/downloads/my-products.html -Driver $Driver
           
           $Element = Find-SeElement -Driver $Driver -Id "grantNumber"
-          Send-SeKeys -Element $Element -Keys "${{ secrets.MCAFEE_GRANTNUMBER }}"
+          Send-SeKeys -Element $Element -Keys "$($env:MCAFEE_GRANTNUMBER)"
           
           $Element = Find-SeElement -Driver $Driver -Id "email"
-          Send-SeKeys -Element $Element -Keys "${{ secrets.EMAIL }}"
+          Send-SeKeys -Element $Element -Keys "$($env:EMAIL)"
           
           $Element = Find-SeElement -Driver $Driver -Id "submit"
           $Element.Click()
