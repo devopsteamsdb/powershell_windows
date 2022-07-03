@@ -63,7 +63,7 @@ jobs:
         run: | 
           $Driver = Start-SeChrome
           $URL = Enter-SeUrl https://www.mcafee.com/enterprise/en-us/downloads/my-products.html -Driver $Driver
-          $URL
+          $Driver.Title
           Stop-SeDriver -Driver $Driver
     
     
