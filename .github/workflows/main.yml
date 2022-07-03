@@ -62,6 +62,8 @@ jobs:
         shell: pwsh
         run: | 
           $Driver = Start-SeChrome
+          $URL = Enter-SeUrl https://www.mcafee.com/enterprise/en-us/downloads/my-products.html -Driver $Driver
+          $URL
           Stop-SeDriver -Driver $Driver
     
     
