@@ -19,7 +19,7 @@ jobs:
   build:
     env:
       GRANTNUMBER: "${{ secrets.MCAFEE_GRANTNUMBER }}"
-      EMAIL: "${{ secrets.EMAIL }}"
+      EMAIL: "${{ secrets.MCAFEE_EMAIL }}"
     # The type of runner that the job will run on
     runs-on: windows-latest
 
@@ -65,13 +65,13 @@ jobs:
         shell: pwsh
         run: | 
           
-          dir env:
+          #dir env:
           
           $Driver = Start-SeChrome
           $URL = Enter-SeUrl https://www.mcafee.com/enterprise/en-us/downloads/my-products.html -Driver $Driver
           
           $Element = Find-SeElement -Driver $Driver -Id "grantNumber"
-          Send-SeKeys -Element $Element -Keys "$($env:MCAFEE_GRANTNUMBER)"
+          Send-SeKeys -Element $Element -Keys "$($env:GRANTNUMBER)"
           
           $Element = Find-SeElement -Driver $Driver -Id "email"
           Send-SeKeys -Element $Element -Keys "$($env:EMAIL)"
