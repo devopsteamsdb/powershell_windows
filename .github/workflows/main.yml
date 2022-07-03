@@ -64,6 +64,9 @@ jobs:
       - name: Test selenium Hellow World
         shell: pwsh
         run: | 
+          
+          dir env:
+          
           $Driver = Start-SeChrome
           $URL = Enter-SeUrl https://www.mcafee.com/enterprise/en-us/downloads/my-products.html -Driver $Driver
           
